@@ -401,12 +401,36 @@ const Index = () => {
                   </div>
                   <div>
                     <h3 className="font-semibold text-lg mb-1">Адрес</h3>
-                    <p className="text-muted-foreground">г. Москва, ул. Примерная, 123</p>
+                    <p className="text-muted-foreground">г. Новосибирск, ул. Большевистская, 103</p>
                     <p className="text-sm text-muted-foreground">Пн-Пт: 9:00 - 18:00</p>
                   </div>
                 </CardContent>
               </Card>
             </div>
+          </div>
+          <div className="mt-12">
+            <Card className="overflow-hidden">
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2">
+                  <Icon name="MapPin" size={24} className="text-primary" />
+                  Мы на карте
+                </CardTitle>
+                <CardDescription>г. Новосибирск, ул. Большевистская, 103</CardDescription>
+              </CardHeader>
+              <CardContent className="p-0">
+                <div className="w-full h-[400px] md:h-[500px]">
+                  <iframe
+                    src="https://yandex.ru/map-widget/v1/?ll=82.920430%2C55.030204&mode=search&ol=geo&ouri=ymapsbm1%3A%2F%2Fgeo%3Fdata%3DCgg1NjgyNzU3NRJb0KDQvtGB0YHQuNGPLCDQndC-0LLQvtGB0LjQsdC40YDRgdC6LCDRg9C70LjRhtCwINCR0L7Qu9GM0YjQtdCy0LjRgdGC0YHQutCw0Y8sIDEwMyIKDdaQXUIV6bxhQg%2C%2C&z=17"
+                    width="100%"
+                    height="100%"
+                    frameBorder="0"
+                    allowFullScreen
+                    style={{ border: 0 }}
+                    loading="lazy"
+                  ></iframe>
+                </div>
+              </CardContent>
+            </Card>
           </div>
         </div>
       </section>
