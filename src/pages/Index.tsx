@@ -177,6 +177,57 @@ const Index = () => {
         </div>
       </section>
 
+      <section className="py-20 px-4">
+        <div className="container mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl md:text-5xl font-bold mb-4">Наша работа</h2>
+            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+              Фотографии с мест оформления ДТП – профессиональный подход к каждому случаю
+            </p>
+          </div>
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+            {[
+              'https://cdn.poehali.dev/projects/382109ac-9f7d-4924-86d7-d960c849e2c7/files/d8777bec-5934-423f-a81f-ea38927a96a1.jpg',
+              'https://cdn.poehali.dev/projects/382109ac-9f7d-4924-86d7-d960c849e2c7/files/48db8517-04e2-4eb9-8c8c-6670186782d0.jpg',
+              'https://cdn.poehali.dev/projects/382109ac-9f7d-4924-86d7-d960c849e2c7/files/cbef0ef6-aa32-4ed5-9253-a552505f7d9d.jpg',
+              'https://cdn.poehali.dev/projects/382109ac-9f7d-4924-86d7-d960c849e2c7/files/fa474c6a-5652-45b3-b25f-334da81e8b5a.jpg',
+              'https://cdn.poehali.dev/projects/382109ac-9f7d-4924-86d7-d960c849e2c7/files/1a66850b-ae14-4000-9afd-6dc0aaf0f96e.jpg',
+              'https://cdn.poehali.dev/projects/382109ac-9f7d-4924-86d7-d960c849e2c7/files/b2465854-5fba-4b56-bef5-88b042550c9e.jpg',
+              'https://cdn.poehali.dev/projects/382109ac-9f7d-4924-86d7-d960c849e2c7/files/8e6445f1-5032-4c17-a6eb-6e70c717ce79.jpg',
+              'https://cdn.poehali.dev/projects/382109ac-9f7d-4924-86d7-d960c849e2c7/files/dd4fe33e-5601-49ae-8e97-cf76225cc3af.jpg',
+              'https://cdn.poehali.dev/projects/382109ac-9f7d-4924-86d7-d960c849e2c7/files/d8777bec-5934-423f-a81f-ea38927a96a1.jpg',
+              'https://cdn.poehali.dev/projects/382109ac-9f7d-4924-86d7-d960c849e2c7/files/48db8517-04e2-4eb9-8c8c-6670186782d0.jpg',
+              'https://cdn.poehali.dev/projects/382109ac-9f7d-4924-86d7-d960c849e2c7/files/cbef0ef6-aa32-4ed5-9253-a552505f7d9d.jpg',
+              'https://cdn.poehali.dev/projects/382109ac-9f7d-4924-86d7-d960c849e2c7/files/fa474c6a-5652-45b3-b25f-334da81e8b5a.jpg',
+              'https://cdn.poehali.dev/projects/382109ac-9f7d-4924-86d7-d960c849e2c7/files/1a66850b-ae14-4000-9afd-6dc0aaf0f96e.jpg',
+              'https://cdn.poehali.dev/projects/382109ac-9f7d-4924-86d7-d960c849e2c7/files/b2465854-5fba-4b56-bef5-88b042550c9e.jpg',
+              'https://cdn.poehali.dev/projects/382109ac-9f7d-4924-86d7-d960c849e2c7/files/8e6445f1-5032-4c17-a6eb-6e70c717ce79.jpg',
+              'https://cdn.poehali.dev/projects/382109ac-9f7d-4924-86d7-d960c849e2c7/files/dd4fe33e-5601-49ae-8e97-cf76225cc3af.jpg',
+              'https://cdn.poehali.dev/projects/382109ac-9f7d-4924-86d7-d960c849e2c7/files/d8777bec-5934-423f-a81f-ea38927a96a1.jpg',
+              'https://cdn.poehali.dev/projects/382109ac-9f7d-4924-86d7-d960c849e2c7/files/48db8517-04e2-4eb9-8c8c-6670186782d0.jpg',
+              'https://cdn.poehali.dev/projects/382109ac-9f7d-4924-86d7-d960c849e2c7/files/cbef0ef6-aa32-4ed5-9253-a552505f7d9d.jpg',
+              'https://cdn.poehali.dev/projects/382109ac-9f7d-4924-86d7-d960c849e2c7/files/fa474c6a-5652-45b3-b25f-334da81e8b5a.jpg'
+            ].map((img, index) => (
+              <div key={index} className="aspect-square overflow-hidden rounded-lg hover-scale cursor-pointer group">
+                <img 
+                  src={img} 
+                  alt={`Фото с места ДТП ${index + 1}`}
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                />
+              </div>
+            ))}
+          </div>
+          <div className="text-center mt-12">
+            <Button size="lg" asChild>
+              <a href={`tel:${PHONE_NUMBER}`}>
+                <Icon name="Phone" size={20} className="mr-2" />
+                Вызвать специалиста: {PHONE_DISPLAY}
+              </a>
+            </Button>
+          </div>
+        </div>
+      </section>
+
       <section id="services" className="py-20 px-4 bg-muted/30">
         <div className="container mx-auto">
           <div className="text-center mb-12">
@@ -389,7 +440,7 @@ const Index = () => {
                   </div>
                   <div>
                     <h3 className="font-semibold text-lg mb-1">Email</h3>
-                    <p className="text-muted-foreground">info@avtopomosh.ru</p>
+                    <a href="mailto:info@dorozhnyj-komissar.ru" className="text-primary hover:underline font-medium">info@dorozhnyj-komissar.ru</a>
                     <p className="text-sm text-muted-foreground">Ответим в течение часа</p>
                   </div>
                 </CardContent>
