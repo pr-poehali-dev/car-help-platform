@@ -4,8 +4,12 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
+import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import Icon from '@/components/ui/icon';
 import { useToast } from '@/hooks/use-toast';
+
+const PHONE_NUMBER = '+79991234567';
+const PHONE_DISPLAY = '+7 (999) 123-45-67';
 
 const Index = () => {
   const { toast } = useToast();
@@ -25,34 +29,48 @@ const Index = () => {
       icon: 'FileText',
       title: 'Оформление ДТП',
       description: 'Быстрое и правильное оформление документов после аварии. Юридическая поддержка на всех этапах.',
-      features: ['Выезд на место', 'Составление схемы', 'Помощь в оформлении', 'Юридическая консультация']
+      features: ['Выезд на место', 'Составление схемы', 'Помощь в оформлении', 'Юридическая консультация'],
+      image: 'https://cdn.poehali.dev/projects/382109ac-9f7d-4924-86d7-d960c849e2c7/files/d8777bec-5934-423f-a81f-ea38927a96a1.jpg'
     },
     {
       icon: 'Shield',
       title: 'ОСАГО онлайн',
       description: 'Оформление полиса ОСАГО за 10 минут без визита в офис. Лучшие предложения от страховых компаний.',
-      features: ['Онлайн оформление', 'Сравнение тарифов', 'Доставка полиса', 'Круглосуточная поддержка']
+      features: ['Онлайн оформление', 'Сравнение тарифов', 'Доставка полиса', 'Круглосуточная поддержка'],
+      image: 'https://cdn.poehali.dev/projects/382109ac-9f7d-4924-86d7-d960c849e2c7/files/8e6445f1-5032-4c17-a6eb-6e70c717ce79.jpg'
     },
     {
       icon: 'Car',
       title: 'КАСКО',
       description: 'Комплексное страхование автомобиля от любых рисков. Индивидуальный расчет и выгодные условия.',
-      features: ['Защита от ущерба', 'Страхование от угона', 'Гибкие тарифы', 'Быстрые выплаты']
+      features: ['Защита от ущерба', 'Страхование от угона', 'Гибкие тарифы', 'Быстрые выплаты'],
+      image: 'https://cdn.poehali.dev/projects/382109ac-9f7d-4924-86d7-d960c849e2c7/files/dd4fe33e-5601-49ae-8e97-cf76225cc3af.jpg'
     }
+  ];
+
+  const insuranceCompanies = [
+    { name: 'Росгосстрах', url: 'https://www.rgs.ru', description: 'Крупнейшая страховая компания России с широкой сетью офисов' },
+    { name: 'РЕСО-Гарантия', url: 'https://www.reso.ru', description: 'Надежная компания с быстрыми выплатами и онлайн-оформлением' },
+    { name: 'Альфастрахование', url: 'https://www.alfastrah.ru', description: 'Входит в топ-3 страховых компаний, удобное мобильное приложение' },
+    { name: 'ВСК', url: 'https://www.vsk.ru', description: 'Специализируется на автостраховании, выгодные тарифы' },
+    { name: 'Ингосстрах', url: 'https://www.ingos.ru', description: 'Одна из старейших страховых компаний с отличной репутацией' }
   ];
 
   const faqItems = [
     {
       question: 'Что делать сразу после ДТП?',
-      answer: 'Первым делом убедитесь в безопасности всех участников. Включите аварийную сигнализацию, выставьте знак аварийной остановки. Вызовите ГИБДД если есть пострадавшие или разногласия. При европротоколе – сфотографируйте место ДТП со всех сторон, зафиксируйте повреждения автомобилей, обменяйтесь данными со вторым участником.'
+      answer: 'Первым делом убедитесь в безопасности всех участников. Включите аварийную сигнализацию, выставьте знак аварийной остановки. Вызовите ГИБДД если есть пострадавшие или разногласия. При европротоколе – сфотографируйте место ДТП со всех сторон, зафиксируйте повреждения автомобилей, обменяйтесь данными со вторым участником.',
+      hasPhone: true
     },
     {
       question: 'Можно ли оформить ДТП без вызова ГИБДД?',
-      answer: 'Да, по европротоколу можно оформить ДТП без ГИБДД, если: нет пострадавших, в аварии участвовало только 2 автомобиля, у обоих водителей есть действующие полисы ОСАГО, нет разногласий по обстоятельствам ДТП, ущерб не превышает 400 000 рублей (в некоторых регионах – до 100 000 рублей).'
+      answer: 'Да, по европротоколу можно оформить ДТП без ГИБДД, если: нет пострадавших, в аварии участвовало только 2 автомобиля, у обоих водителей есть действующие полисы ОСАГО, нет разногласий по обстоятельствам ДТП, ущерб не превышает 400 000 рублей (в некоторых регионах – до 100 000 рублей).',
+      hasDownload: true
     },
     {
       question: 'Сколько стоит полис ОСАГО?',
-      answer: 'Стоимость ОСАГО рассчитывается индивидуально и зависит от: региона регистрации автомобиля, мощности двигателя, стажа и возраста водителя, коэффициента бонус-малус (история страхования), количества водителей в полисе. Базовые тарифы устанавливаются ЦБ РФ. В среднем полис обходится от 5 до 15 тысяч рублей в год.'
+      answer: 'Стоимость ОСАГО рассчитывается индивидуально и зависит от: региона регистрации автомобиля, мощности двигателя, стажа и возраста водителя, коэффициента бонус-малус (история страхования), количества водителей в полисе. Базовые тарифы устанавливаются ЦБ РФ. В среднем полис обходится от 5 до 15 тысяч рублей в год.',
+      hasInsurance: true
     },
     {
       question: 'В чем разница между ОСАГО и КАСКО?',
@@ -80,11 +98,33 @@ const Index = () => {
             <a href="#services" className="hover:text-primary transition-colors">Услуги</a>
             <a href="#faq" className="hover:text-primary transition-colors">FAQ</a>
             <a href="#contact" className="hover:text-primary transition-colors">Контакты</a>
-            <Button>Позвонить</Button>
+            <Button asChild>
+              <a href={`tel:${PHONE_NUMBER}`}>
+                <Icon name="Phone" size={18} className="mr-2" />
+                Позвонить
+              </a>
+            </Button>
           </nav>
-          <Button variant="ghost" size="icon" className="md:hidden">
-            <Icon name="Menu" size={24} />
-          </Button>
+          <Sheet>
+            <SheetTrigger asChild>
+              <Button variant="ghost" size="icon" className="md:hidden">
+                <Icon name="Menu" size={24} />
+              </Button>
+            </SheetTrigger>
+            <SheetContent>
+              <nav className="flex flex-col gap-6 mt-8">
+                <a href="#services" className="text-lg hover:text-primary transition-colors">Услуги</a>
+                <a href="#faq" className="text-lg hover:text-primary transition-colors">FAQ</a>
+                <a href="#contact" className="text-lg hover:text-primary transition-colors">Контакты</a>
+                <Button asChild className="mt-4">
+                  <a href={`tel:${PHONE_NUMBER}`}>
+                    <Icon name="Phone" size={18} className="mr-2" />
+                    {PHONE_DISPLAY}
+                  </a>
+                </Button>
+              </nav>
+            </SheetContent>
+          </Sheet>
         </div>
       </header>
 
@@ -99,10 +139,13 @@ const Index = () => {
               <p className="text-xl text-muted-foreground mb-8">
                 Оформление ДТП, автострахование и юридическая поддержка. Быстро, профессионально, надёжно.
               </p>
-              <div className="flex flex-wrap gap-4">
-                <Button size="lg" className="text-lg px-8">
-                  <Icon name="Phone" size={20} className="mr-2" />
-                  Вызвать помощь
+              <div className="flex flex-col sm:flex-row gap-4">
+                <Button size="lg" className="text-lg px-8" asChild>
+                  <a href={`tel:${PHONE_NUMBER}`}>
+                    <Icon name="Phone" size={20} className="mr-2" />
+                    <span className="hidden sm:inline">Вызвать помощь</span>
+                    <span className="sm:hidden">{PHONE_DISPLAY}</span>
+                  </a>
                 </Button>
                 <Button size="lg" variant="outline" className="text-lg px-8">
                   <Icon name="Calculator" size={20} className="mr-2" />
@@ -147,9 +190,12 @@ const Index = () => {
             {services.map((service, index) => (
               <Card 
                 key={index} 
-                className="hover-scale hover:shadow-xl transition-all duration-300 border-2 hover:border-primary"
+                className="hover-scale hover:shadow-xl transition-all duration-300 border-2 hover:border-primary overflow-hidden"
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
+                <div className="h-48 overflow-hidden">
+                  <img src={service.image} alt={service.title} className="w-full h-full object-cover" />
+                </div>
                 <CardHeader>
                   <div className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center mb-4">
                     <Icon name={service.icon} size={32} className="text-primary" />
@@ -158,7 +204,7 @@ const Index = () => {
                   <CardDescription className="text-base">{service.description}</CardDescription>
                 </CardHeader>
                 <CardContent>
-                  <ul className="space-y-3">
+                  <ul className="space-y-3 mb-6">
                     {service.features.map((feature, idx) => (
                       <li key={idx} className="flex items-center gap-2">
                         <Icon name="CheckCircle2" size={18} className="text-primary flex-shrink-0" />
@@ -166,10 +212,18 @@ const Index = () => {
                       </li>
                     ))}
                   </ul>
-                  <Button className="w-full mt-6" variant="outline">
-                    Подробнее
-                    <Icon name="ArrowRight" size={18} className="ml-2" />
-                  </Button>
+                  <div className="flex flex-col gap-3">
+                    <Button className="w-full" asChild>
+                      <a href={`tel:${PHONE_NUMBER}`}>
+                        <Icon name="Phone" size={18} className="mr-2" />
+                        {PHONE_DISPLAY}
+                      </a>
+                    </Button>
+                    <Button className="w-full" variant="outline">
+                      Подробнее
+                      <Icon name="ArrowRight" size={18} className="ml-2" />
+                    </Button>
+                  </div>
                 </CardContent>
               </Card>
             ))}
@@ -190,13 +244,55 @@ const Index = () => {
               <AccordionItem 
                 key={index} 
                 value={`item-${index}`}
-                className="border-2 rounded-lg px-6 hover:border-primary transition-colors"
+                className="border-2 rounded-lg px-4 md:px-6 hover:border-primary transition-colors"
               >
-                <AccordionTrigger className="text-lg font-semibold hover:no-underline py-6">
+                <AccordionTrigger className="text-base md:text-lg font-semibold hover:no-underline py-6 text-left">
                   {item.question}
                 </AccordionTrigger>
-                <AccordionContent className="text-base text-muted-foreground pb-6">
-                  {item.answer}
+                <AccordionContent className="text-sm md:text-base text-muted-foreground pb-6 space-y-4">
+                  <p>{item.answer}</p>
+                  {item.hasPhone && (
+                    <Button asChild className="w-full sm:w-auto">
+                      <a href={`tel:${PHONE_NUMBER}`}>
+                        <Icon name="Phone" size={18} className="mr-2" />
+                        Позвонить сейчас: {PHONE_DISPLAY}
+                      </a>
+                    </Button>
+                  )}
+                  {item.hasDownload && (
+                    <div className="space-y-2">
+                      <Button asChild className="w-full sm:w-auto" variant="outline">
+                        <a href="https://www.autoins.ru/files/documents/blank-evroprotokola.pdf" target="_blank" rel="noopener noreferrer">
+                          <Icon name="Download" size={18} className="mr-2" />
+                          Скачать бланк европротокола
+                        </a>
+                      </Button>
+                    </div>
+                  )}
+                  {item.hasInsurance && (
+                    <div className="space-y-3 mt-4">
+                      <p className="font-semibold">Популярные страховые компании:</p>
+                      <div className="grid gap-3">
+                        {insuranceCompanies.map((company, idx) => (
+                          <Card key={idx} className="hover:border-primary transition-colors">
+                            <CardContent className="p-4">
+                              <div className="flex items-start justify-between gap-3">
+                                <div className="flex-1">
+                                  <h4 className="font-semibold mb-1">{company.name}</h4>
+                                  <p className="text-sm text-muted-foreground">{company.description}</p>
+                                </div>
+                                <Button size="sm" variant="outline" asChild>
+                                  <a href={company.url} target="_blank" rel="noopener noreferrer">
+                                    <Icon name="ExternalLink" size={16} />
+                                  </a>
+                                </Button>
+                              </div>
+                            </CardContent>
+                          </Card>
+                        ))}
+                      </div>
+                    </div>
+                  )}
                 </AccordionContent>
               </AccordionItem>
             ))}
@@ -259,7 +355,7 @@ const Index = () => {
                   </div>
                   <div>
                     <h3 className="font-semibold text-lg mb-1">Телефон</h3>
-                    <p className="text-muted-foreground">+7 (999) 123-45-67</p>
+                    <a href={`tel:${PHONE_NUMBER}`} className="text-primary hover:underline font-medium">{PHONE_DISPLAY}</a>
                     <p className="text-sm text-muted-foreground">Круглосуточно, без выходных</p>
                   </div>
                 </CardContent>
